@@ -7,7 +7,6 @@ use crate::error::ContractError;
 use crate::msg::{ExecuteMsg, InstantiateMsg, LockResponse, QueryMsg, WhitelistResponse};
 use crate::state;
 
-// version info for migration info
 const CONTRACT_NAME: &str = "crates.io:contract-mutex";
 const CONTRACT_VERSION: &str = env!("CARGO_PKG_VERSION");
 
@@ -81,6 +80,9 @@ fn execute_lock(deps: DepsMut, env: Env, info: MessageInfo) -> Result<Response, 
         .add_attribute("since_height", env.block.height.to_string()))
 }
 
+/// Try to unlock the lock.
+///
+/// Fails if not locked or ender is not the owner of the lock.
 fn execute_unlock(deps: DepsMut, env: Env, info: MessageInfo) -> Result<Response, ContractError> {
     let mut lock = state::LOCK.load(deps.storage)?;
 
