@@ -33,7 +33,7 @@ Will fail if:
 }
 ```
 
-#### Lock
+#### Unlock
 
 Try to release de lock.
 
