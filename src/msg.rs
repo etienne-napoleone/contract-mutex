@@ -38,7 +38,7 @@ pub struct LockResponse {
     pub owner: Option<Addr>,
 }
 
-/// Deposited balance response.
+/// Whitelist response.
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 pub struct WhitelistResponse {
     pub members: Vec<Addr>,
